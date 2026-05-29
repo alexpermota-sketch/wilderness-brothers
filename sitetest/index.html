@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Wilderness Brothers - Representamos marcas de aventura, surf e outdoor em Portugal: ROARK, OluKai, melin, Katin, Db, Suntribe. Qualidade, sustentabilidade e alma.">
+    <meta name="keywords" content="wilderness brothers, ROARK, olukai, melin, katin, db journey, suntribe, aventura, surf, outdoor, lifestyle, portugal">
+    <meta name="author" content="Wilderness Brothers">
+    <meta property="og:title" content="Wilderness Brothers | Marcas de Aventura em Portugal">
+    <meta property="og:description" content="Da montanha ao mar, representamos marcas que vestem a alma aventureira.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wildernessbrothers.pt">
+    <title>Wilderness Brothers | Marcas de Aventura — Portugal</title>
+
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300..800&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --white: #ffffff;
+            --gray-light: #e0e0e0;
+            --gray-dark: #4a4a4a;
+            --ocean-deep: #0d3b4c;
+            --amber: #d98c2e;
+            --amber-light: #f0b34b;
+            --sand: #f2e8d5;
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --max-width: 1280px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Inter', sans-serif; font-weight: 800; line-height: 1.1; }
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.2rem;
+        }
+        .hero h1 + h1 { margin-bottom: 1.2rem; }
+        .brand-text h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-size: 2rem;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+        h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); color: var(--black); margin-bottom: 1rem; }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 2.5rem; }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10,10,10,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0.7rem 0;
+            transition: transform 0.4s ease, padding 0.35s ease;
+        }
+        header.hidden { transform: translateY(-100%); }
+        header.scrolled { padding: 0.5rem 0; }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+        .logo img { height: 45px; width: auto; }
+        .logo img.logo-lettering { height: 48px; width: auto; }
+
+        /* Navegação */
+        nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        nav a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            padding-bottom: 4px;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amber);
+            transition: var(--transition);
+        }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        nav a:hover, nav a.active { color: var(--white); }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        .lang-switch a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .lang-switch a:hover,
+        .lang-switch a.active {
+            opacity: 1;
+        }
+        .lang-switch a::after { display: none; }
+
+        .btn-nav {
+            background: var(--amber);
+            color: var(--black) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+        }
+        .btn-nav:hover { background: var(--amber-light); transform: translateY(-2px); }
+        .btn-nav::after { display: none; }
+
+        .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--white); cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+        .hero-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.7s ease-out;
+        }
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+            z-index: 3;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            max-width: 650px;
+            padding-left: 5vw;
+            padding-top: 80px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
+            max-width: 480px;
+            font-weight: 300;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-primary { background: var(--amber); color: var(--black); border-color: var(--amber); }
+        .btn-primary:hover { background: transparent; color: var(--amber-light); border-color: var(--amber); transform: translateY(-3px); }
+        .btn-outline { background: transparent; border-color: var(--white); color: var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--black); transform: translateY(-3px); }
+
+        .slide-indicators {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+        .slide-indicators .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slide-indicators .dot.active { background: var(--amber); }
+
+        /* Brands */
+        .brands { padding: 7rem 0; background: var(--white); }
+        .brands-intro { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
+        .brands-intro p { color: var(--gray-dark); font-size: 1rem; }
+        .brand-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-bottom: 5rem;
+            background: var(--sand);
+            border: 1px solid var(--gray-light);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .brand-card.visible { opacity: 1; transform: translateY(0); }
+        .brand-image-wrapper {
+            width: 100%;
+            background-color: var(--ocean-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .brand-image { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        .brand-text {
+            padding: 2.5rem 2rem;
+            background: var(--ocean-deep);
+            color: var(--white);
+        }
+        .brand-origin { font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; color: var(--amber-light); margin-bottom: 1rem; display: block; }
+        .brand-text p { font-size: 0.95rem; margin-bottom: 1.5rem; font-weight: 300; line-height: 1.5; }
+        .brand-link {
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--amber-light);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .brand-link:hover { border-bottom-color: var(--amber); color: var(--amber); }
+
+        /* Sobre Nós */
+        .sobre-nos { padding: 7rem 0; background: var(--ocean-deep); color: var(--white); position: relative; overflow: hidden; }
+        .sobre-nos::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 60%;
+            height: 160%;
+            background: radial-gradient(ellipse, rgba(217,140,46,0.12), transparent 70%);
+            pointer-events: none;
+        }
+        .sobre-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+        .sobre-text .section-tag { color: var(--amber-light); }
+        .sobre-text h2 { color: var(--white); margin-bottom: 1rem; }
+        .sobre-text p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 1.2rem; font-weight: 300; line-height: 1.5; }
+        .sobre-valores { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+        .sobre-valor {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 0.8rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+        .sobre-valor:hover { background: rgba(217,140,46,0.2); border-color: var(--amber); }
+        .sobre-valor .valor-icon svg { width: 18px; height: 18px; stroke: var(--amber-light); fill: none; }
+        .sobre-imagem { height: 450px; background-size: cover; background-position: center; border-radius: 8px; }
+
+        /* Services */
+        .services { padding: 7rem 0; background: var(--sand); }
+        .services-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
+        .services-header p { color: var(--gray-dark); font-size: 1rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            transition: var(--transition);
+            border-radius: 8px;
+        }
+        .service-card:hover { transform: translateY(-8px); border-color: var(--amber); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: var(--ocean-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-icon svg { width: 28px; height: 28px; stroke: var(--amber-light); fill: none; }
+        .service-card h4 { font-size: 1.1rem; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ocean-deep); }
+        .service-card p { font-size: 0.9rem; color: var(--gray-dark); line-height: 1.5; }
+
+        /* Contact */
+        .contact { padding: 7rem 0; background: var(--ocean-deep); color: var(--white); }
+        .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .contact-text .section-tag { color: var(--amber-light); }
+        .contact-text h2 { color: var(--white); margin-bottom: 1rem; }
+        .contact-text p { color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-weight: 300; }
+        .contact-info-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .info-icon svg { width: 18px; height: 18px; stroke: var(--amber-light); fill: none; }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-form input, .contact-form textarea {
+            padding: 0.8rem 1.2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--amber); background: rgba(255,255,255,0.1); }
+        .contact-form button {
+            background: var(--amber);
+            color: var(--black);
+            border: none;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+        .contact-form button:hover { background: var(--amber-light); transform: translateY(-2px); }
+
+        /* Footer */
+        footer { background: var(--black-light); padding: 4rem 0 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: var(--white); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.2rem; }
+        .footer-col a, .footer-col p { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 0.5rem; transition: var(--transition); }
+        .footer-col a:hover { color: var(--amber-light); padding-left: 4px; }
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        .social-links a:hover { background: var(--amber); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.7rem; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .brand-card { grid-template-columns: 1fr 1fr; }
+            .brand-card:nth-child(even) { direction: rtl; }
+            .brand-card:nth-child(even) .brand-text { direction: ltr; }
+            .brand-text { padding: 3rem; }
+            .brand-text h3 { font-size: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .header-inner { padding: 0 1rem; }
+            nav ul { gap: 0.8rem; }
+            nav a { font-size: 0.65rem; }
+            .container { padding: 0 1.5rem; }
+            .sobre-inner, .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .sobre-imagem { height: 250px; order: -1; }
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .hero { min-height: auto; padding: 8rem 0 6rem; }
+            .hero h1 { font-size: clamp(2.2rem, 6vw, 4rem); }
+            .hero-content { padding-left: 1rem; padding-right: 1rem; }
+            .brand-text h3 { font-size: 2rem; }
+        }
+        @media (max-width: 650px) {
+            nav ul { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--black); flex-direction: column; padding: 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            nav ul.open { display: flex; }
+            .mobile-toggle { display: block; }
+            .services-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .sobre-valores { grid-template-columns: 1fr; }
+            .brand-text h3 { font-size: 1.8rem; }
+            .brand-image-wrapper { padding: 1rem; }
+            .slide-indicators { bottom: 15px; right: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="logoWB.png" alt="Wilderness Brothers">
+                <img src="lettering.png" alt="Wilderness Brothers" class="logo-lettering">
+            </a>
+            <nav>
+                <button class="mobile-toggle" id="mobileToggle">☰</button>
+                <ul id="navMenu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#marcas">Marcas</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#contacto" class="btn-nav">Contacto</a></li>
+                    <li class="lang-switch">
+                        <a href="index.html" class="active">🇵🇹</a>
+                        <a href="en.html">🇬🇧</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-slides" id="heroSlides">
+            <div class="hero-slide" style="background-image: url('banner.png');"></div>
+            <div class="hero-slide" style="background-image: url('banner1.png');"></div>
+            <div class="hero-slide" style="background-image: url('banner2.png');"></div>
+            <div class="hero-slide" style="background-image: url('banner3.png');"></div>
+            <div class="hero-slide" style="background-image: url('banner4.png');"></div>
+            <div class="hero-slide" style="background-image: url('banner5.png');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Inspirados pela natureza.</h1>
+            <h1>Guiados pela aventura.</h1>
+            <p>Representamos marcas para quem troca rotinas por trilhos, cidades por paisagens e o comum pelo inesquecível. Produtos com alma, feitos para durar e para inspirar.</p>
+            <div class="hero-buttons">
+                <a href="#marcas" class="btn btn-primary">Descobre as Marcas</a>
+                <a href="#sobre" class="btn btn-outline">Sobre Nós</a>
+            </div>
+        </div>
+        <div class="slide-indicators" id="slideIndicators">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+            <span class="dot" data-index="5"></span>
+        </div>
+    </section>
+
+    <section class="brands" id="marcas">
+        <div class="container">
+            <div class="brands-intro">
+                <span class="section-tag">As Nossas Marcas</span>
+                <h2>Curadoria de alma aventureira</h2>
+                <p>Cada marca que representamos foi escolhida a dedo — pela sua autenticidade, pela sua história e pelo respeito que tem pela natureza. Marcas que não se limitam a vestir: equipam-te para a jornada.</p>
+            </div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="roark.png" alt="ROARK" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Califórnia, EUA</span><h3>ROARK</h3><p>Não é apenas roupa. É um manifesto. A ROARK nasceu das viagens, das estradas de terra batida e das ondas apanhadas ao nascer do sol. Cada coleção conta a história de uma expedição real — das Filipinas à Islândia — e cada peça é desenhada para resistir ao sal, ao vento e ao imprevisto. Para quem veste a aventura como segunda pele.</p><a href="https://www.roark.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="olukai.png" alt="OluKai" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Havai, EUA</span><h3>OLUKAI</h3><p>Nascida no Havai e guiada pelo espírito do Aloha, a OluKai cria calçado premium que une conforto, durabilidade e um design intemporal. Cada par é fabricado com respeito pela natureza e um profundo compromisso com a sustentabilidade. Calçar OluKai é levar contigo a generosidade das ilhas, a força do oceano e a certeza de que cada passo honra a terra que pisas.</p><a href="https://www.olukai.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="melin.png" alt="melin" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Califórnia, EUA</span><h3>MELIN</h3><p>Nascida sob o sol eterno do Sul da Califórnia, a melin não é apenas uma marca — é uma revolução no mundo dos acessórios. Tudo começou com a visão ousada de dois grandes amigos, Brian McDonell e Corey Roth. Movidos por uma paixão indomável pela vida ao ar livre e pela cultura urbana, eles recusaram-se a aceitar o óbvio. Olharam para o mercado e viram bonés comuns, descartáveis e sem alma. A resposta deles? Redefinir as regras do jogo. Com uma atenção obsessiva aos detalhes e materiais de luxo nunca antes vistos, a melin pegou no clássico chapéu casual e elevou-o ao estatuto de obra de arte premium. Mais do que proteger do sol, um melin é uma afirmação de estilo, performance e sofisticação para quem exige o melhor em cada detalhe da vida.</p><a href="https://www.melin.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="katin.png" alt="Katin" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Surfside, Califórnia, EUA</span><h3>KATIN</h3><p>Há mais de 60 anos, Walter e Nancy Katin cortavam velas de barco para criar os primeiros calções de surf do mundo. O que começou como um pedido de um jovem surfista chamado Corky Carroll — que mais tarde se tornaria um dos primeiros profissionais da história — é hoje um ícone da cultura surf. A Katin é a prova viva de que as coisas mais autênticas nascem da necessidade, do engenho e do amor pelo mar.</p><a href="https://www.katinusa.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="db.png" alt="Db Journey" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Noruega</span><h3>DB JOURNEY</h3><p>Fundada em 2009 pelo lendário freeskier Jon Olsson e pelo engenheiro Truls Brataas, a Db nasceu para resolver um problema simples: como transportar o que realmente importa. Das mochilas às malas de viagem, cada produto é desenhado com a precisão nórdica, a robustez da neve e a elegância do design escandinavo. Para quem viaja longe, com estilo e com tudo o que precisa.</p><a href="https://www.dbjourney.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+            <div class="brand-card"><div class="brand-image-wrapper"><img src="suntribe.png" alt="Suntribe" class="brand-image"></div><div class="brand-text"><span class="brand-origin">Suécia</span><h3>SUNTRIBE</h3><p>A Suntribe acredita que proteger a pele não precisa de custar a saúde do planeta. Os seus protetores solares são 100% livres de químicos sintéticos, usando apenas ingredientes naturais e orgânicos que respeitam o corpo e os oceanos. Da areia quente do Algarve às ondas geladas da Ericeira, a Suntribe protege-te para que te possas concentrar no que realmente importa: viver o momento.</p><a href="https://www.suntribesunscreen.com" target="_blank" rel="noopener noreferrer" class="brand-link">Visitar site da marca →</a></div></div>
+        </div>
+    </section>
+
+    <section class="sobre-nos" id="sobre">
+        <div class="container">
+            <div class="sobre-inner">
+                <div class="sobre-text">
+                    <span class="section-tag">Sobre Nós</span>
+                    <h2>Humanos & Natureza</h2>
+                    <p style="font-size: 1.1rem; font-weight: 500; color: var(--amber-light); margin-bottom: 1.5rem;">A nossa perspicácia em sintonia com a natureza permite-nos escolher materiais, parceiros e soluções que respeitam o equilíbrio natural sem comprometer o desempenho ou a durabilidade.</p>
+                    <p>Somos uma equipa com mais de 20 anos de experiência no universo action sports. A Wilderness Brothers nasceu da vontade de representar marcas alternativas e emergentes que fazem a diferença — marcas que tornam a nossa vida mais fácil e mais inspiradora.</p>
+                    <p>Seja na cidade, numa reunião ou numa festa, seja a procurar a próxima onda ou nas montanhas mais remotas onde o equipamento é indispensável: o teu conforto define a tua confiança. E a tua confiança define como vês o mundo.</p>
+                    <p>Acreditamos num mercado mais justo e numa indústria mais sustentável. Comprar menos, mas melhor. Com conhecimento e o conselho certo. Oferecer qualidade é a nossa forma de proteger o futuro — o Planeta, as Pessoas e os negócios que caminham em harmonia connosco.</p>
+                    <div class="sobre-valores">
+                        <span class="sobre-valor"><span class="valor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>Sustentabilidade</span>
+                        <span class="sobre-valor"><span class="valor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>Comércio Justo</span>
+                        <span class="sobre-valor"><span class="valor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>Qualidade Premium</span>
+                        <span class="sobre-valor"><span class="valor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>Respeito pelo Planeta</span>
+                    </div>
+                </div>
+                <div class="sobre-imagem" style="background-image:url('equipa.png');"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicos">
+        <div class="container">
+            <div class="services-header">
+                <span class="section-tag">O Que Fazemos</span>
+                <h2>Serviços de representação</h2>
+                <p>Mais do que distribuir marcas, criamos pontes entre a visão dos criadores e as lojas que querem oferecer o melhor aos seus clientes.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg></div><h4>Consultoria de Loja</h4><p>Criamos o teu serviço de atendimento profissional e damos-te as ferramentas para manteres a tua loja sempre no ponto.</p></div>
+                <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div><h4>Distribuição Oficial</h4><p>Gerimos toda a cadeia de distribuição das marcas que representamos em território português, com logística ágil e eficiente.</p></div>
+                <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 20V10M12 20V4M6 20v-6"></path></svg></div><h4>Projetos à Medida</h4><p>Desenvolvemos projetos de raiz para lojas, espaços comerciais e eventos — sempre com a marca da aventura.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-inner">
+                <div class="contact-text">
+                    <span class="section-tag">Fala Connosco</span>
+                    <h2>Vamos criar algo juntos.</h2>
+                    <p>Tens um projeto que encaixa nas nossas marcas ou serviços? Preenche o formulário e entraremos em contacto contigo o mais rapidamente possível.</p>
+                    <div style="margin-top:2rem">
+                        <div class="contact-info-item"><span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>wildernessbrothersac@gmail.com</div>
+                        <div class="contact-info-item"><span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>+351 919 977 712</div>
+                        <div class="contact-info-item"><span class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>Showroom: Largo Egas Moniz 4, 2710-125 Sintra</div>
+                    </div>
+                </div>
+                <form class="contact-form" action="https://formsubmit.co/wildernessbrothersac@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Novo contacto do site Wilderness Brothers">
+                    <input type="text" name="nome" placeholder="O teu nome" required>
+                    <input type="email" name="email" placeholder="O teu email" required>
+                    <textarea name="mensagem" rows="5" placeholder="Como te podemos ajudar?" required></textarea>
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Wilderness Brothers, Lda</h4>
+                    <p>O encontro entre performance e liberdade.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/wilderness_brothersac/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Marcas</h4>
+                    <a href="https://www.roark.com" target="_blank" rel="noopener noreferrer">Roark</a>
+                    <a href="https://www.olukai.com" target="_blank" rel="noopener noreferrer">OluKai</a>
+                    <a href="https://www.melin.com" target="_blank" rel="noopener noreferrer">melin</a>
+                    <a href="https://www.katinusa.com" target="_blank" rel="noopener noreferrer">Katin</a>
+                    <a href="https://www.dbjourney.com" target="_blank" rel="noopener noreferrer">Db Journey</a>
+                    <a href="https://www.suntribesunscreen.com" target="_blank" rel="noopener noreferrer">Suntribe</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <a href="#inicio">Início</a>
+                    <a href="#marcas">Marcas</a>
+                    <a href="#sobre">Sobre Nós</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Wilderness Brothers. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 100 && currentScroll > lastScroll) header.classList.add('hidden');
+            else header.classList.remove('hidden');
+            header.classList.toggle('scrolled', currentScroll > 50);
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu
+        const toggle = document.getElementById('mobileToggle'), menu = document.getElementById('navMenu');
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            toggle.textContent = menu.classList.contains('open') ? '✕' : '☰';
+        });
+        document.querySelectorAll('#navMenu a').forEach(l => l.addEventListener('click', () => {
+            menu.classList.remove('open'); toggle.textContent = '☰';
+        }));
+
+        // Active section highlight
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionBottom) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('#navMenu a').forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // Brand cards animation
+        const cards = document.querySelectorAll('.brand-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        cards.forEach(card => observer.observe(card));
+
+        // Carousel
+        const slidesContainer = document.getElementById('heroSlides');
+        const dots = document.querySelectorAll('#slideIndicators .dot');
+        const slides = document.querySelectorAll('.hero-slide');
+        const totalSlides = slides.length;
+        
+        for (let i = 0; i < totalSlides; i++) {
+            const clone = slides[i].cloneNode(true);
+            slidesContainer.appendChild(clone);
+        }
+        
+        let currentSlide = 0;
+        let isTransitioning = false;
+        let autoSlideInterval;
+        
+        function updateSlider(index, immediate = false) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            currentSlide = index;
+            slidesContainer.style.transition = immediate ? 'none' : 'transform 0.7s ease-out';
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            const effectiveIndex = currentSlide % totalSlides;
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === effectiveIndex);
+            });
+            
+            setTimeout(() => {
+                isTransitioning = false;
+                if (currentSlide >= totalSlides) {
+                    slidesContainer.style.transition = 'none';
+                    currentSlide = currentSlide - totalSlides;
+                    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    void slidesContainer.offsetHeight;
+                    slidesContainer.style.transition = 'transform 0.7s ease-out';
+                }
+                if (currentSlide < 0) {
+                    slidesContainer.style.transition = 'none';
+                    currentSlide = currentSlide + totalSlides;
+                    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    void slidesContainer.offsetHeight;
+                    slidesContainer.style.transition = 'transform 0.7s ease-out';
+                }
+            }, immediate ? 0 : 700);
+        }
+        
+        function nextSlide() { updateSlider(currentSlide + 1); }
+        function prevSlide() { updateSlider(currentSlide - 1); }
+        
+        function startAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+        }
+        
+        slidesContainer.style.transform = `translateX(0%)`;
+        
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                stopAutoSlide();
+                updateSlider(idx);
+                startAutoSlide();
+            });
+        });
+        
+        slidesContainer.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 20) {
+                e.preventDefault();
+                stopAutoSlide();
+                e.deltaX > 0 ? nextSlide() : prevSlide();
+                startAutoSlide();
+            }
+        }, { passive: false });
+        
+        startAutoSlide();
+    </script>
+</body>
+</html>
